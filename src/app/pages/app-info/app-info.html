@@ -24,8 +24,8 @@
 </div>
 
 
-<div>
-  <app-card [item]="item"  class="flex"></app-card>
+<div *ngIf="item">
+  <app-card [item]="item" class="flex"></app-card>
   <div>
     <div class="total">
 

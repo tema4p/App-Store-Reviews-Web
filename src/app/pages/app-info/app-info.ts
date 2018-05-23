@@ -19,7 +19,7 @@ export class AppInfoPageComponent implements OnChanges, OnInit  {
     countriesResult: 0,
   };
 
-  private allReviews: IReview[] = [];
+  public allReviews: IReview[] = [];
   private perPage = 20;
   private currentPage = 1;
 
@@ -32,10 +32,11 @@ export class AppInfoPageComponent implements OnChanges, OnInit  {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.item) {
-      this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10).subscribe(() => {
-        this.items = this.allReviews.slice(0, this.perPage);
-        this.loadedCountriesCount = this.getCountries();
-      });
+      this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10)
+        .subscribe(() => {
+          this.items = this.allReviews.slice(0, this.perPage);
+          this.loadedCountriesCount = this.getCountries();
+        });
     }
   }
 
