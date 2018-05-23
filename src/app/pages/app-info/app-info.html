@@ -1,0 +1,58 @@
+<!--
+  Generated template for the AppInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div>
+  <div>
+    <div>{{item.trackName}}</div>
+    <div>
+      <button *ngIf="!favoritesService.isFavorite(item)" (click)="favoritesService.add(item)">
+        <span name="ios-star-outline"></span>
+      </button>
+      <button *ngIf="favoritesService.isFavorite(item)" (click)="favoritesService.remove(item)">
+        <span name="ios-star"></span>
+      </button>
+    </div>
+  </div>
+  <div class="progress">
+    <div class="bar"
+         *ngIf="progress.countriesResult < progress.countriesTotal"
+         [ngStyle]="{width: 100 * ( progress.countriesResult / progress.countriesTotal) + '%'}"></div>
+  </div>
+</div>
+
+
+<div>
+  <app-card [item]="item"  class="flex"></app-card>
+  <div>
+    <div class="total">
+
+      <div class="reviews">Reviews: {{allReviews.length}}{{allReviews.length === 200 ? '+' : ''}}</div>
+      <div class="countries">Countries: {{loadedCountriesCount}}</div>
+      <a href="https://itunes.apple.com/app/id{{item.trackId}}">
+        AppStore&nbsp;<span name="ios-arrow-forward"></span>
+      </a>
+    </div>
+    <div *ngFor="let review of items" class="review">
+      <div class="header">
+        <div class="flex">
+          <app-stars [rate]="review.rating"></app-stars>
+        </div>
+        <div class="title">{{review.title}}</div>
+        <div class="version">v{{review.version}}</div>
+      </div>
+      <div class="content">{{review.content}}</div>
+      <div class="header">
+        <div class="author">
+          <img src="assets/countries/{{review.countryCode}}.png" alt="">
+          {{review.author}}
+          <span class="country">({{review.country}})</span>
+        </div>
+        <div class="date">{{review.updated}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

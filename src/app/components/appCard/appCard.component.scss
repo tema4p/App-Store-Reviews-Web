@@ -1,0 +1,58 @@
+:host {
+  font-size: 11px;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  i {
+    color: gray;
+  }
+  .left-column {
+    flex: 0 0 80px;
+    text-align: center;
+    position: relative;
+    color: gray;
+    .img {
+      flex: 0 0 80px;
+      height: 128px;
+      background-size: cover;
+      border-radius: 15px;
+      margin: 2px 0;
+      .img-main {
+        width: 80px;
+        height: 80px;
+        background-size: cover;
+        border-radius: 15px;
+      }
+    }
+  }
+
+  .right-column {
+    padding: 0 5px;
+
+    .title {
+
+    }
+    .description {
+      flex: 0 0 55px;
+      line-height: 14px;
+      margin: 5px 0;
+      font-weight: 400;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      width: 100%;
+      word-wrap: break-word;
+      word-break: break-word;
+    }
+    .info {
+      color: gray;
+      display: flex;
+      align-content: space-between;
+      span {
+        flex: 1;
+      }
+    }
+  }
+}

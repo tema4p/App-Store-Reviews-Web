@@ -1,0 +1,11 @@
+<h3>Home</h3>
+
+<div>
+  <div>
+    <div *ngFor="let item of items">
+      <app-card [item]="item" class="flex"
+                (click)="goToApp(item)">
+      </app-card>
+    </div>
+  </div>
+</div>

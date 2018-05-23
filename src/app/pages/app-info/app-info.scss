@@ -1,0 +1,74 @@
+:host {
+  .progress {
+    height: 2px;
+    width: 100%;
+    opacity: 0.3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    .bar {
+      transition: 100ms ease width;
+      height: 2px;
+      width: 0;
+      box-shadow: 0 0 9px #00adff;
+      border-radius: 5px;
+      background-color: #005cff;
+    }
+  }
+
+  app-card {
+    margin: 0 -10px 10px;
+  }
+
+  .total {
+    color: gray;
+    display: flex;
+    align-items: center;
+    .reviews {
+      flex: 1;
+    }
+    .countries {
+      flex: 1;
+    }
+  }
+
+  .review {
+    padding: 4px 10px;
+    border-bottom: 1px solid #f1f1f1;
+    background: #ffffff;
+    margin: 4px -10px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 15px #f1f1f1;
+
+    .header {
+      padding: 4px 0;
+      display: flex;
+      .title {
+        flex: 1;
+        font-weight: 500;
+      }
+      .date, .version {
+        color: gray;
+        font-size: 90%;
+      }
+      .author {
+        color: gray;
+        flex: 1;
+        font-size: 90%;
+        .country {
+          color: gray;
+          font-style: italic;
+          font-size: 90%;
+        }
+      }
+      app-stars {
+        margin-right: 2px;
+      }
+    }
+    .content {
+      padding: 4px 0;
+    }
+  }
+
+
+}

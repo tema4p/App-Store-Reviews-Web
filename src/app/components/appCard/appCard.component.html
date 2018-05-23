@@ -1,0 +1,19 @@
+<div class="flex flex-column left-column">
+  <app-stars [rate]="item.averageUserRating"></app-stars>
+  <div class="img" [ngStyle]="{'background-image': 'url(' + item.artworkUrl60 + ')'}">
+    <div class="img-main" *ngIf="fullImgDelay" [ngStyle]="{'background-image': 'url(' + item.artworkUrl512 + ')'}"></div>
+  </div>
+  <div>{{item.formattedPrice}}</div>
+</div>
+<div class="flex flex-column right-column">
+  <div class="title"><b>{{item.trackName}}</b> <br> <i>{{item.artistName}}</i></div>
+  <div class="description">{{item.description}}</div>
+
+  <div><i>{{item.genres.join(', ')}}</i></div>
+  <div class="info">
+    <span>v<b>{{item.version}}</b></span>
+    <span>{{(item.fileSizeBytes / 1024 / 1024).toFixed(1)}}Mb</span>
+    <span>{{getDateFormatted(item.currentVersionReleaseDate)}}</span>
+  </div>
+
+</div>

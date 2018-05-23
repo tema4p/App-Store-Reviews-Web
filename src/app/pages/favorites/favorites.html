@@ -1,0 +1,14 @@
+<h3>Favorites</h3>
+
+<div>
+  <div *ngIf="favoritesService.favorites.length > 0">
+    <div *ngFor="let item of items">
+      <app-card [item]="item" class="flex"
+                (click)="goToApp(item)">
+      </app-card>
+    </div>
+  </div>
+  <div class="empty" *ngIf="favoritesService.favorites.length === 0">
+    You have no favorites apps
+  </div>
+</div>

@@ -1,0 +1,21 @@
+:host {
+  position: relative;
+  font-size: 14px;
+  .rating {
+    span {
+      min-width: 16px;
+      color: #bfbfbf;
+    }
+  }
+  .rating-fill {
+    position: absolute;
+    overflow: hidden;
+    color: #de9a56;
+    width: 0;
+    top: 0;
+    left: 0;
+    span {
+      min-width: 16px;
+    }
+  }
+}
