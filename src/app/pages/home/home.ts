@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppInfoPageComponent } from '../app-info/app-info';
 import * as _ from 'lodash';
@@ -9,9 +9,11 @@ import * as _ from 'lodash';
   styleUrls: ['./home.scss']
 })
 export class HomePageComponent {
+  @Output() selectedItem = new EventEmitter<any>();
+
   public items: any[];
   public stars: [1, 2, 3, 4, 5];
-  public term = 'taranukha';
+  public term = 'english';
   public fullImgDelay = false;
   private minLengthSearch = 3;
 
@@ -30,7 +32,8 @@ export class HomePageComponent {
     }
   }
 
-  public goToApp(item): void {
+  public goToApp(item: any): void {
+    this.selectedItem.emit(item);
     // this.navCtrl.push(AppInfoPage, {item: item});
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChange, SimpleChanges} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IReview, ReviewService } from '../../services/reviewService';
 import { FavoritesService } from '../../services/favoritesService';
@@ -9,7 +9,7 @@ import * as _ from 'lodash';
   templateUrl: 'app-info.html',
   styleUrls: ['./app-info.scss']
 })
-export class AppInfoPageComponent {
+export class AppInfoPageComponent implements OnChanges, OnInit  {
   @Input()
   public item: any;
   public items: IReview[] = [];
@@ -28,14 +28,19 @@ export class AppInfoPageComponent {
               public http: HttpClient,
               public reviewService: ReviewService,
               public favoritesService: FavoritesService) {
-    // this.item = navParams.get('item');
   }
 
-  ionViewDidEnter() {
-    this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10).subscribe(() => {
-      this.items = this.allReviews.slice(0, this.perPage);
-      this.loadedCountriesCount = this.getCountries();
-    });
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.item) {
+      this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10).subscribe(() => {
+        this.items = this.allReviews.slice(0, this.perPage);
+        this.loadedCountriesCount = this.getCountries();
+      });
+    }
+  }
+
+  ngOnInit() {
+
   }
 
   getCountries(): number {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import 'normalize.css';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  currentApp: any;
+
+  private selectItems(item: any): void {
+    this.currentApp = item;
+    console.log('currentApp', item);
+  }
 }

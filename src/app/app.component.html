@@ -1,5 +1,7 @@
-<h3>
-  App reviews
-</h3>
+<div class="left">
+  <app-page-home (selectedItem)="selectItems($event)"></app-page-home>
+</div>
+<div class="right">
+  <app-page-info [item]="currentApp"></app-page-info>
+</div>
 
-<app-page-home></app-page-home>
