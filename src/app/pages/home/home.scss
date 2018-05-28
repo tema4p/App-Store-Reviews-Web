@@ -1,5 +1,22 @@
 :host {
-  app-card {
-    border-top: 1px solid #e8e8e8;
+  width: 100%;
+  .search-field {
+    display: flex;
+    justify-content: center;
+
+    mat-form-field {
+      flex: 0 0 300px;
+    }
   }
+
+  .apps-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    app-card {
+      max-width: 800px;
+      border-top: 1px solid #e8e8e8;
+    }
+  }
+
 }

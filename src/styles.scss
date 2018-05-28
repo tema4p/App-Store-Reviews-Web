@@ -1,5 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@font-face {
+  font-family: 'Helvetica Light';
+  src: url(assets/fonts/HelveticaNeueCyr-UltraLight_0.otf) format("opentype");
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url(assets/fonts/HelveticaNeueCyr-Light.otf) format("opentype");
+}
+
+@font-face {
+  font-family: 'Helvetica Light';
+  src: url(assets/fonts/HelveticaNeueCyr-UltraLight_0.otf) format("opentype");
+}
+
+* {
+  font-family: 'Helvetica', Helvetica, 'Myriad Pro', 'Lucida Grande', sans-serif;
+}
+
 body, html {
   padding: 0;
   margin: 0;
+}
+
+@mixin overview-scroll {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:vertical {
+    width: .8rem;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    border-radius: .3rem;
+    border: none;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: .3rem;
+    background-color: #c2c2c2;
+  }
 }

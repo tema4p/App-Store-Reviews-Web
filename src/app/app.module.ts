@@ -13,7 +13,19 @@ import { AppCardComponent } from './components/appCard/appCard.component';
 
 import { ReviewService } from './services/reviewService';
 import { FavoritesService } from './services/favoritesService';
+import { MatButtonModule, MatInputModule, MatSelectModule, MatCardModule, MatTableModule} from '@angular/material';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
+const appRoutes: Routes = [
+  { path: 'home', component: HomePageComponent },
+  { path: 'appInfo/:id', component: AppInfoPageComponent },
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   declarations: [
@@ -26,8 +38,19 @@ import { FavoritesService } from './services/favoritesService';
     AppInfoPageComponent,
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    FormsModule,
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule,
+    MatInputModule
   ],
   providers: [
     ReviewService,

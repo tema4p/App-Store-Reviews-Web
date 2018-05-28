@@ -1,6 +1,12 @@
 <div>
-  <div *ngFor="let item of items">
-    <app-card [item]="item" class="flex"
+  <div class="search-field">
+    <mat-form-field>
+      <input matInput placeholder="Search" [(ngModel)]="term" (change)="startSearch()" >
+    </mat-form-field>
+  </div>
+
+  <div class="apps-list">
+    <app-card *ngFor="let item of items" [item]="item" class="flex"
               (click)="goToApp(item)">
     </app-card>
   </div>

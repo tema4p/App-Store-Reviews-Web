@@ -24,6 +24,7 @@ export class HomePageComponent {
   }
 
   public getItems(): void {
+    console.log('this.term', this.term);
     if (this.term.length >= this.minLengthSearch) {
       this.http.get(`https://itunes.apple.com/search?term=${this.term}&entity=software`)
         .subscribe((data: any) => {
@@ -34,6 +35,9 @@ export class HomePageComponent {
 
   public goToApp(item: any): void {
     this.selectedItem.emit(item);
-    // this.navCtrl.push(AppInfoPage, {item: item});
+  }
+
+  startSearch(): void {
+    this.getItems();
   }
 }
