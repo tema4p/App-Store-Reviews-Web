@@ -3,13 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { IReview, ReviewService } from '../../services/reviewService';
 import { FavoritesService } from '../../services/favoritesService';
 import * as _ from 'lodash';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import {AppsSearchService} from '../../services/appsSearchService';
 
 @Component({
   selector: 'app-page-info',
   templateUrl: 'app-info.html',
   styleUrls: ['./app-info.scss']
 })
-export class AppInfoPageComponent implements OnChanges, OnInit  {
+export class AppInfoPageComponent implements OnInit  {
   @Input()
   public item: any;
   public items: IReview[] = [];
@@ -24,24 +27,29 @@ export class AppInfoPageComponent implements OnChanges, OnInit  {
   private currentPage = 1;
 
   constructor(
+              private route: ActivatedRoute,
+              private router: Router,
               // public navParams: NavParams,
               public http: HttpClient,
               public reviewService: ReviewService,
-              public favoritesService: FavoritesService) {
+              public favoritesService: FavoritesService,
+              public appsSearchService: AppsSearchService) {
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.item) {
-      this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10)
-        .subscribe(() => {
-          this.items = this.allReviews.slice(0, this.perPage);
-          this.loadedCountriesCount = this.getCountries();
-        });
-    }
+  fetchReviews() {
+    this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10)
+      .subscribe(() => {
+        this.items = this.allReviews.slice(0, this.perPage);
+        this.loadedCountriesCount = this.getCountries();
+      });
   }
 
   ngOnInit() {
-
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.appsSearchService.getApp(id).subscribe((res) => {
+      this.item = res;
+      this.fetchReviews();
+    });
   }
 
   getCountries(): number {

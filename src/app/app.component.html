@@ -1,12 +1,20 @@
-
-
-<router-outlet></router-outlet>
-<!--
-<div class="left">
-  <app-page-home (selectedItem)="selectItems($event)"></app-page-home>
+<div class="header">
+  <div>All App Store Reviews</div>
+  <div> <mat-form-field>
+    <input matInput placeholder="Search" [(ngModel)]="searchWord" (change)="goToSearch()" >
+  </mat-form-field>
+  </div>
+  <div class="favorites">
+    <mat-select [(value)]="favorites" (selectionChange)="onFavoriteSelect()"  placeholder="Favorites">
+      <mat-option value="15days">Last 2 weeks</mat-option>
+      <mat-option value="29days">Last 4 weeks</mat-option>
+      <mat-option value="57days">Last 6 weeks</mat-option>
+      <mat-option value="113days">Last 12 weeks</mat-option>
+    </mat-select>
+  </div>
 </div>
-<div class="right">
-  <app-page-info [item]="currentApp"></app-page-info>
+
+<div class="main">
+  <router-outlet></router-outlet>
 </div>
--->
 

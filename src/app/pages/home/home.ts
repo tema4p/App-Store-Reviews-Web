@@ -1,43 +1,54 @@
-import { Component, EventEmitter, Input, Output  } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AppInfoPageComponent } from '../app-info/app-info';
 import * as _ from 'lodash';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import {AppsSearchService} from '../../services/appsSearchService';
 
 @Component({
   selector: 'app-page-home',
   templateUrl: 'home.html',
   styleUrls: ['./home.scss']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   @Output() selectedItem = new EventEmitter<any>();
 
   public items: any[];
-  public stars: [1, 2, 3, 4, 5];
   public term = 'english';
   public fullImgDelay = false;
-  private minLengthSearch = 3;
 
-  constructor(public http: HttpClient) {
-    setTimeout(() => {
+  constructor( private route: ActivatedRoute,
+               private router: Router,
+               public appsSearchService: AppsSearchService) {
+  }
+
+  ngOnInit() {
+    if (this.route.snapshot.paramMap.get('word')) {
+      this.term = this.route.snapshot.paramMap.get('word');
       this.getItems();
-    }, 10);
+    }
+
+    this.route.paramMap.subscribe(
+      (params: ParamMap | any) => {
+        if (params.params.word && (this.term !== params.params.word)) {
+          this.term = params.params.word;
+          this.getItems();
+        }
+      }
+    );
   }
 
   public getItems(): void {
-    console.log('this.term', this.term);
-    if (this.term.length >= this.minLengthSearch) {
-      this.http.get(`https://itunes.apple.com/search?term=${this.term}&entity=software`)
-        .subscribe((data: any) => {
-          this.items = _.sortBy(data.results, ['trackId']);
+    if (this.term && this.term.length >= 0) {
+      this.appsSearchService.searchApps(this.term)
+        .subscribe((res: any) => {
+          this.items = _.sortBy(res.results, ['trackId']);
         });
     }
   }
 
   public goToApp(item: any): void {
-    this.selectedItem.emit(item);
-  }
-
-  startSearch(): void {
-    this.getItems();
+    this.router.navigate(['/appInfo', item.trackId]);
   }
 }

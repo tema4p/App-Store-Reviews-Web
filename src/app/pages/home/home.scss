@@ -3,7 +3,7 @@
   .search-field {
     display: flex;
     justify-content: center;
-
+    align-items: center;
     mat-form-field {
       flex: 0 0 300px;
     }
@@ -12,10 +12,10 @@
   .apps-list {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     app-card {
       max-width: 800px;
-      border-top: 1px solid #e8e8e8;
     }
   }
 

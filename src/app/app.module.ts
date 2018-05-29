@@ -17,9 +17,11 @@ import { MatButtonModule, MatInputModule, MatSelectModule, MatCardModule, MatTab
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import {AppsSearchService} from './services/appsSearchService';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
+  { path: 'home/:word', component: HomePageComponent },
   { path: 'appInfo/:id', component: AppInfoPageComponent },
   { path: '',
     redirectTo: '/home',
@@ -35,12 +37,12 @@ const appRoutes: Routes = [
     HomePageComponent,
     StarsComponent,
     AppCardComponent,
-    AppInfoPageComponent,
+    AppInfoPageComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      // { enableTracing: true } // <-- debugging purposes only
     ),
     FormsModule,
     BrowserModule,
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     ReviewService,
-    FavoritesService
+    FavoritesService,
+    AppsSearchService
   ],
   bootstrap: [AppComponent]
 })
