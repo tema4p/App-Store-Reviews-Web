@@ -6,6 +6,7 @@ import * as _ from 'lodash';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import {AppsSearchService} from '../../services/appsSearchService';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-page-info',
@@ -29,6 +30,7 @@ export class AppInfoPageComponent implements OnInit  {
   constructor(
               private route: ActivatedRoute,
               private router: Router,
+              private location: Location,
               // public navParams: NavParams,
               public http: HttpClient,
               public reviewService: ReviewService,
@@ -63,6 +65,10 @@ export class AppInfoPageComponent implements OnInit  {
       ...this.allReviews.slice(this.items.length, this.perPage * this.currentPage)
     ];
     infiniteScroll.complete();
+  }
+
+  navigateBack(): void {
+    this.location.back(); // <-- go back to previous location on cancel
   }
 }
 

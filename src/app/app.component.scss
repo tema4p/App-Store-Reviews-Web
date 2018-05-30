@@ -1,5 +1,9 @@
 
 :host {
+  [routerLink] {
+    cursor: pointer;
+    outline: none;
+  }
 
   .header {
     padding: 20px;

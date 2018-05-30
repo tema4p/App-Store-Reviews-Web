@@ -1,4 +1,66 @@
 :host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+
+  .info-header {
+    max-width: 810px;
+    display: flex;
+    width: 100%;
+    .info-title {
+      flex: 1;
+      font-size: 20px;
+      display: flex;
+      .info-name {
+        flex: 1;
+      }
+      .info-favorite {
+        flex: 0 0 20px;
+        cursor: pointer;
+        color: orange;
+        opacity: 0.5;
+        &:hover {
+          transition: 300ms ease all;
+          transform: scale(1.2);
+          left: 20px;
+          opacity: 1;
+        }
+      }
+    }
+
+  }
+
+  .navigate-back {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    width: 50px;
+    height: 100px;
+    background-color: #00000012;
+    background-image: url(/assets/img/bg.png);
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.5;
+    &:hover {
+      transition: 300ms ease all;
+      transform: scale(1.2);
+      left: 20px;
+      opacity: 1;
+    }
+
+    fa {
+      font-size: 70px;
+    }
+  }
+
   .progress {
     height: 2px;
     width: 100%;
@@ -17,7 +79,8 @@
   }
 
   app-card {
-    margin: 0 -10px 10px;
+    margin: 20px 0;
+    max-width: 810px;
   }
 
   .total {
@@ -33,9 +96,10 @@
   }
 
   .review {
+    max-width: 800px;
     padding: 4px 10px;
     border-bottom: 1px solid #f1f1f1;
-    background: #ffffff;
+    background: #ffffffe3;
     margin: 4px 0;
     border-radius: 8px;
     box-shadow: 1px 1px 15px #f1f1f1;

@@ -4,4 +4,11 @@
               (click)="goToApp(item)">
     </app-card>
   </div>
+
+  <div class="apps-list favorites" *ngIf="!items || items.length === 0">
+    <h2>Favorites</h2>
+    <app-card *ngFor="let item of favorites" [item]="item" class="flex"
+              (click)="goToApp(item)">
+    </app-card>
+  </div>
 </div>

@@ -1,19 +1,13 @@
-<!--
-  Generated template for the AppInfoPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<div *ngIf="item">
-  <div>
-    <div>{{item.trackName}}</div>
-    <div>
-      <button *ngIf="!favoritesService.isFavorite(item)" (click)="favoritesService.add(item)">
-        <span name="ios-star-outline"></span>
-      </button>
-      <button *ngIf="favoritesService.isFavorite(item)" (click)="favoritesService.remove(item)">
-        <span name="ios-star"></span>
-      </button>
+<div *ngIf="item"  class="info-header">
+  <div class="info-title">
+    <div class="info-name">{{item.trackName}}</div>
+    <div class="info-favorite">
+      <span *ngIf="!favoritesService.isFavorite(item)" (click)="favoritesService.add(item)">
+        <i class="fas fa-star"></i>
+      </span>
+      <span *ngIf="favoritesService.isFavorite(item)" (click)="favoritesService.remove(item)">
+        <i class="far fa-star"></i>
+      </span>
     </div>
   </div>
   <div class="progress">
@@ -22,7 +16,6 @@
          [ngStyle]="{width: 100 * ( progress.countriesResult / progress.countriesTotal) + '%'}"></div>
   </div>
 </div>
-
 
 <div *ngIf="item">
   <app-card [item]="item" class="flex"></app-card>
@@ -54,5 +47,10 @@
       </div>
     </div>
   </div>
-
 </div>
+
+
+<div class="navigate-back" (click)="navigateBack()">
+  <fa name="angle-left"></fa>
+</div>
+

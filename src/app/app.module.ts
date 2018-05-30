@@ -18,6 +18,7 @@ import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {AppsSearchService} from './services/appsSearchService';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -52,7 +53,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     ReviewService,

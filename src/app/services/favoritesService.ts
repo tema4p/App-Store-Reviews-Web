@@ -42,10 +42,11 @@ export class FavoritesService {
         .subscribe((data: any) => {
           const find = _.find(items, {trackId: data.results[0].trackId});
           if (find) {
-            _.extend(find, data.results[0])
+            _.extend(find, data.results[0]);
           } else {
             items.push(data.results[0]);
           }
+          console.log('items',items);
         });
     });
     return items;

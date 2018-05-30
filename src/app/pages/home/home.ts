@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import {AppsSearchService} from '../../services/appsSearchService';
+import {FavoritesService} from '../../services/favoritesService';
 
 @Component({
   selector: 'app-page-home',
@@ -17,10 +18,12 @@ export class HomePageComponent implements OnInit {
   public items: any[];
   public term = 'english';
   public fullImgDelay = false;
+  public favorites = [];
 
   constructor( private route: ActivatedRoute,
                private router: Router,
-               public appsSearchService: AppsSearchService) {
+               public appsSearchService: AppsSearchService,
+               private favoritesService: FavoritesService) {
   }
 
   ngOnInit() {
@@ -37,6 +40,8 @@ export class HomePageComponent implements OnInit {
         }
       }
     );
+
+    this.favoritesService.getFavoritesItems(this.favorites);
   }
 
   public getItems(): void {
