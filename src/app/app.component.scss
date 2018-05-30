@@ -3,6 +3,7 @@
   [routerLink] {
     cursor: pointer;
     outline: none;
+    font-size: 24px;
   }
 
   .header {
@@ -11,6 +12,7 @@
     color: #665cc6;
     border-bottom: 1px solid white;
     display: flex;
+    align-items: center;
     > div {
       flex: 1;
     }
@@ -20,6 +22,8 @@
   }
 
   .main {
+    position: relative;
+
     padding: 20px;
     display: flex;
    }

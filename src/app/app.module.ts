@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {AppsSearchService} from './services/appsSearchService';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -54,6 +56,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatTableModule,
     MatInputModule,
+    MatIconModule,
+    MatProgressBarModule,
     AngularFontAwesomeModule
   ],
   providers: [

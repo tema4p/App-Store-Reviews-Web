@@ -3,10 +3,10 @@
     <div class="info-name">{{item.trackName}}</div>
     <div class="info-favorite">
       <span *ngIf="!favoritesService.isFavorite(item)" (click)="favoritesService.add(item)">
-        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
       </span>
       <span *ngIf="favoritesService.isFavorite(item)" (click)="favoritesService.remove(item)">
-        <i class="far fa-star"></i>
+        <i class="fas fa-star"></i>
       </span>
     </div>
   </div>

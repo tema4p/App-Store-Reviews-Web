@@ -41,4 +41,9 @@ export class AppComponent implements OnInit {
   public goToSearch(): void {
     this.router.navigate(['/home', this.searchWord]);
   }
+
+  public resetSearch(): void {
+    this.searchWord = '';
+    this.router.navigate(['/home']);
+  }
 }

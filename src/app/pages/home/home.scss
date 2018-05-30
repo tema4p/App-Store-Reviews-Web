@@ -1,5 +1,12 @@
 :host {
   width: 100%;
+  mat-progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.5;
+  }
   .search-field {
     display: flex;
     justify-content: center;

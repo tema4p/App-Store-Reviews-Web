@@ -1,9 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AppInfoPageComponent } from '../app-info/app-info';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import * as _ from 'lodash';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {AppsSearchService} from '../../services/appsSearchService';
 import {FavoritesService} from '../../services/favoritesService';
 
@@ -19,6 +16,7 @@ export class HomePageComponent implements OnInit {
   public term = 'english';
   public fullImgDelay = false;
   public favorites = [];
+  public isLoading = false;
 
   constructor( private route: ActivatedRoute,
                private router: Router,
@@ -45,10 +43,12 @@ export class HomePageComponent implements OnInit {
   }
 
   public getItems(): void {
+    this.isLoading = true;
     if (this.term && this.term.length >= 0) {
       this.appsSearchService.searchApps(this.term)
         .subscribe((res: any) => {
           this.items = _.sortBy(res.results, ['trackId']);
+          this.isLoading = false;
         });
     }
   }
