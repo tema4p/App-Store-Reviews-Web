@@ -50,6 +50,9 @@ export class HomePageComponent implements OnInit {
         .subscribe((res: any) => {
           this.items = _.sortBy(res.results, ['trackId']);
           this.isLoading = false;
+          setTimeout(() => {
+            window.scrollTo(0, 0);
+          });
         });
     }
   }
