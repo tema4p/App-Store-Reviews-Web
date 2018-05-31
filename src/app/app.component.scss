@@ -7,12 +7,22 @@
   }
 
   .header {
-    padding: 20px;
-    background-image: url("/assets/img/bg.png");
+    position: fixed;
+    width: 100%;
+    background-image: url(/assets/img/bg.png);
+    background-color: #e9ecf6f7;
     color: #665cc6;
     border-bottom: 1px solid white;
     display: flex;
     align-items: center;
+    z-index: 10;
+    transition: 250ms all;
+    padding: 0 20px;
+
+    &.expandedNavBar {
+      padding: 20px;
+    }
+
     > div {
       flex: 1;
     }
@@ -23,7 +33,7 @@
 
   .main {
     position: relative;
-    padding: 20px;
+    padding: 130px 20px 30px;
     display: flex;
     flex-direction: column;
    }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import 'normalize.css';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {routerTransition} from './animations/routerTransition';
-
+import { HostListener} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   searchWord = '';
   currentApp: any;
+  expandedNavBar = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +34,11 @@ export class AppComponent implements OnInit {
     //     }
     //   }
     // );
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.expandedNavBar = window.scrollY === 0;
   }
 
   private selectItems(item: any): void {
