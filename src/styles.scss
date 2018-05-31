@@ -20,6 +20,10 @@
   font-family: 'Helvetica', Helvetica, 'Myriad Pro', 'Lucida Grande', sans-serif;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body, html {
   padding: 0;
   margin: 0;
@@ -56,3 +60,10 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cedbe9', endColorstr='#26558b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
+
+//router-outlet ~ * {
+//  position: absolute;
+//  height: 100%;
+//  width: 100%;
+//}
+

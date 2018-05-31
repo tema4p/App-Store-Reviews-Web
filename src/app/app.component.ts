@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import 'normalize.css';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {routerTransition} from './animations/routerTransition';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
   title = 'app';

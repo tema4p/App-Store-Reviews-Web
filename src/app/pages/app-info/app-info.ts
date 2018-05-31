@@ -7,6 +7,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import {AppsSearchService} from '../../services/appsSearchService';
 import { Location } from '@angular/common';
+import {routerTransition} from '../../animations/routerTransition';
 
 @Component({
   selector: 'app-page-info',

@@ -3,6 +3,7 @@ import * as _ from 'lodash';
 import {Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {AppsSearchService} from '../../services/appsSearchService';
 import {FavoritesService} from '../../services/favoritesService';
+import {routerTransition} from '../../animations/routerTransition';
 
 @Component({
   selector: 'app-page-home',

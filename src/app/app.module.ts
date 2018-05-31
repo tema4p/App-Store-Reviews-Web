@@ -21,7 +21,7 @@ import {AppsSearchService} from './services/appsSearchService';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { MatRippleModule } from '@angular/material';
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'home/:word', component: HomePageComponent },
@@ -58,6 +58,7 @@ const appRoutes: Routes = [
     MatInputModule,
     MatIconModule,
     MatProgressBarModule,
+    MatRippleModule,
     AngularFontAwesomeModule
   ],
   providers: [
