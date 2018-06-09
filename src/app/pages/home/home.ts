@@ -1,9 +1,11 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
+import { AppsSearchService } from '../../services/appsSearchService';
+import { FavoritesService } from '../../services/favoritesService';
+import { CardModel } from '../../models/card.model';
+
 import * as _ from 'lodash';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
-import {AppsSearchService} from '../../services/appsSearchService';
-import {FavoritesService} from '../../services/favoritesService';
-import {routerTransition} from '../../animations/routerTransition';
 
 @Component({
   selector: 'app-page-home',
@@ -13,17 +15,17 @@ import {routerTransition} from '../../animations/routerTransition';
 export class HomePageComponent implements OnInit {
   @Output() selectedItem = new EventEmitter<any>();
 
-  public items: any[];
-  public term = 'english';
-  public fullImgDelay = false;
-  public favorites = [];
+  public items: CardModel[];
+  public favorites: CardModel[] = [];
   public isLoading = false;
 
-  constructor( private route: ActivatedRoute,
-               private router: Router,
-               public appsSearchService: AppsSearchService,
-               private favoritesService: FavoritesService) {
-  }
+  private term = 'english';
+
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              public appsSearchService: AppsSearchService,
+              private favoritesService: FavoritesService
+  ) {}
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('word')) {
@@ -45,10 +47,11 @@ export class HomePageComponent implements OnInit {
 
   public getItems(): void {
     this.isLoading = true;
+
     if (this.term && this.term.length >= 0) {
       this.appsSearchService.searchApps(this.term)
-        .subscribe((res: any) => {
-          this.items = _.sortBy(res.results, ['trackId']);
+        .subscribe((cards: CardModel[]) => {
+          this.items = _.sortBy(cards, ['trackId']);
           this.isLoading = false;
           setTimeout(() => {
             window.scrollTo(0, 0);

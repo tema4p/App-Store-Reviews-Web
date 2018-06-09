@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import 'normalize.css';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {routerTransition} from './animations/routerTransition';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { routerTransition } from './animations/routerTransition';
 import { HostListener} from '@angular/core';
+
+import 'normalize.css';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,17 @@ import { HostListener} from '@angular/core';
   animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
-  title = 'app';
-  searchWord = '';
-  currentApp: any;
-  expandedNavBar = true;
+  public searchWord: string = '';
+  public expandedNavBar: boolean = true;
+
+  @HostListener('window:scroll', []) onWindowScroll(): void {
+    this.expandedNavBar = window.scrollY === 0;
+  }
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router) {
-  }
+    private router: Router
+  ) {}
 
   ngOnInit() {
     // TODO fix initial search term
@@ -34,16 +37,6 @@ export class AppComponent implements OnInit {
     //     }
     //   }
     // );
-  }
-
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.expandedNavBar = window.scrollY === 0;
-  }
-
-  private selectItems(item: any): void {
-    this.currentApp = item;
-    console.log('currentApp', item);
   }
 
   public goToSearch(): void {

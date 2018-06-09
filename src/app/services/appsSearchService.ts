@@ -1,46 +1,53 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
 import { HttpClient } from '@angular/common/http';
-import {map, tap} from 'rxjs/internal/operators';
+
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators';
 import 'rxjs/add/observable/of';
-import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+
+import * as _ from 'lodash';
+
+import { CardModel } from '../models/card.model';
 
 @Injectable()
 export class AppsSearchService {
-  items: any = {};
 
-  constructor(public http: HttpClient) {
+  private searchUrl: string = 'https://itunes.apple.com/search';
+  private items: any = {};
 
-  }
+  constructor(private http: HttpClient) {}
 
-  searchApps(term: any): any {
-    return (<any> this.http.get<any>(`https://itunes.apple.com/search?term=${term}&entity=software`))
+  public searchApps(term: string): Observable<CardModel[]> {
+    return this.http.get<any>(`${this.searchUrl}?term=${term}&entity=software`)
       .pipe(
-        tap( // Log the result or error
-          (data: any) => {
-            _.each(data.results, (item) => {
-              this.items[item.trackId] = item;
-            });
-            console.log('this.items', this.items);
-          }
-        )
+        map((data: any) => {
+        const cards: CardModel[] = [];
+
+        _.each(data.results, (item) => {
+          const card: CardModel = new CardModel(item);
+
+          this.items[item.trackId] = card;
+          cards.push(card);
+        });
+
+        return cards;
+        })
       );
   }
 
-  getApp(trackId: number): any {
+  public getApp(trackId: number): Observable<CardModel> {
     if (trackId && this.items[trackId]) {
       return Observable.of(this.items[trackId]);
     } else {
-      return (<any> this.http.get<any>(`https://itunes.apple.com/search?term=${trackId}&entity=software`))
+      return this.http.get<any>(`${this.searchUrl}?term=${trackId}&entity=software`)
         .pipe(
           map( // Log the result or error
             (data: any) => {
-              return data.results[0];
+              return new CardModel(data.results[0]);
             }
           )
         );
     }
-
-    // return ;
   }
 }

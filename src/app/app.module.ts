@@ -15,7 +15,7 @@ import { ReviewService } from './services/reviewService';
 import { FavoritesService } from './services/favoritesService';
 import { MatButtonModule, MatInputModule, MatSelectModule, MatCardModule, MatTableModule} from '@angular/material';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {AppsSearchService} from './services/appsSearchService';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
