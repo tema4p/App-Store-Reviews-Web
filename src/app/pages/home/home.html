@@ -8,11 +8,13 @@
     </app-card>
   </div>
 
-  <div class="apps-list favorites" *ngIf="!items || items.length === 0">
-    <h2>Favorites</h2>
-    <app-card *ngFor="let item of favorites" [item]="item" class="flex"
-              (click)="goToApp(item)"
-              mat-ripple mat-ripple-color="#665cc6">
-    </app-card>
+  <div class="favorites" *ngIf="!items || items.length === 0">
+    <h3>Favorites</h3>
+    <div class="favorites-apps">
+      <img *ngFor="let item of favorites"
+           class="app-icon"
+           [attr.src]="item.artworkUrl512"
+           (click)="goToApp(item)" />
+    </div>
   </div>
 </div>

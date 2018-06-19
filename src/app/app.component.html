@@ -9,14 +9,11 @@
   </mat-form-field>
     <button mat-button><i class="fas fa-chevron-right"></i></button>
   </div>
-  <div class="favorites">
-    <!--<mat-select [(value)]="markets" (selectionChange)="onMarketSelect()"  placeholder="Favorites">-->
-      <!--<mat-option value="15days">Last 2 weeks</mat-option>-->
-      <!--<mat-option value="29days">Last 4 weeks</mat-option>-->
-      <!--<mat-option value="57days">Last 6 weeks</mat-option>-->
-      <!--<mat-option value="113days">Last 12 weeks</mat-option>-->
-    <!--</mat-select>-->
-  </div>
+  <a class="navigate-back"
+          *ngIf="enabledBack()"
+          (click)="navigateBack()">
+    <i class="fas fa-chevron-left"></i> Back To Search
+  </a>
 </div>
 
 <div class="main" [@routerTransition]="o.isActivated ? o.activatedRoute : ''">

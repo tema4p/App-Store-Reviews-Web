@@ -21,6 +21,9 @@
 
     &.expandedNavBar {
       padding: 20px;
+      .navigate-back {
+        font-size: 17px;
+      }
     }
 
     > div {
@@ -29,9 +32,29 @@
     .favorites {
       flex: 0 0 200px;
     }
+
+    .navigate-back {
+      cursor: pointer;
+      position: absolute;
+      bottom: 6px;
+      left: 20px;
+      font-family: "Helvetica Light";
+      font-size: 13px;
+
+      color: #ffffff;
+      font-weight: 300;
+      text-shadow: 1px 1px 15px #665bc7;
+      transition: 200ms all;
+
+      &:hover {
+        transform: scale(1.1);
+        text-shadow: 1px 1px 4px #665bc7;
+      }
+    }
   }
 
   .main {
+    //background-image: url(/assets/img/bg2.png);
     position: relative;
     padding: 130px 20px 30px;
     display: flex;
