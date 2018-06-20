@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as _ from 'lodash';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
 import { Observer } from 'rxjs/Observer';
 import * as moment from 'moment';
 import * as $ from 'jquery';

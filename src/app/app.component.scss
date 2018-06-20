@@ -43,12 +43,12 @@
 
       color: #ffffff;
       font-weight: 300;
-      text-shadow: 1px 1px 15px #665bc7;
+      text-shadow: 1px 1px 4px #665bc7;
       transition: 200ms all;
 
       &:hover {
         transform: scale(1.1);
-        text-shadow: 1px 1px 4px #665bc7;
+        text-shadow: 1px 1px 15px #665bc7;
       }
     }
   }
