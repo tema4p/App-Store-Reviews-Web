@@ -28,9 +28,8 @@ export class AppInfoPageComponent implements OnInit  {
   };
 
   public allReviews: IReview[] = [];
-  private perPage = 20;
+  private perPage = 50;
   private currentPage = 1;
-  public chart: any;
   public countriesChartData: {};
   public ratesChartData: [0, 0, 0, 0, 0];
 

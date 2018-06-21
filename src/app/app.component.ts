@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   public searchWord: string = '';
   public expandedNavBar: boolean = true;
   public countries: any[] = _.toPairs(COUNTRIES);
-  public selectedMarket: string = 'us';
+  public selectedMarket: string = localStorage['selectedMarket'] || 'us';
 
   @HostListener('window:scroll', []) onWindowScroll(): void {
     this.expandedNavBar = window.scrollY === 0;
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   ngOnInit() { }
 
   public goToSearch(): void {
-    console.log('goToSearch');
+    localStorage['selectedMarket'] = this.selectedMarket;
     this.router.navigate(['/home', this.searchWord, this.selectedMarket]);
   }
 
