@@ -50,7 +50,6 @@ export class AppInfoPageComponent implements OnInit  {
   fetchReviews() {
     this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10)
       .subscribe(() => {
-        console.log('this.allReviews', this.allReviews);
         this.items = this.allReviews.slice(0, this.perPage);
         this.loadedCountriesCount = this.getCountries();
 
@@ -74,7 +73,6 @@ export class AppInfoPageComponent implements OnInit  {
 
   calculateCountByRates() {
     this.ratesChartData = this.progress.countByRates.slice(1).reverse();
-    console.log('data', this.ratesChartData);
   }
 
   ngOnInit() {

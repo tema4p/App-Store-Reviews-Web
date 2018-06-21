@@ -46,7 +46,6 @@ export class FavoritesService {
           } else {
             items.push(data.results[0]);
           }
-          console.log('items',items);
         });
     });
     return items;

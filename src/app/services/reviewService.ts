@@ -27,11 +27,9 @@ export class ReviewService {
   private countries = COUNTRIES;
 
   constructor(private http: HttpClient) {
-    console.log('Countries', this.countries);
   }
 
   public fetchReviewsByGroup(items: IReview[], progress: any, id: number, perGroup: number): Observable<any> {
-    console.log('fetchReviewsByGroup');
     return new Observable((observer: Observer<null>) => {
       this.fetchByGroup(items, progress, id, observer, perGroup);
     });
@@ -101,16 +99,13 @@ export class ReviewService {
 
   private extractReviews(xmlString: string, items: IReview[], country: string, progress): void {
     const entries = xmlString.split('<entry>');
-    console.log('entries', entries);
     progress.countByCountries[country] = progress[country] || 0;
 
 
     entries.forEach((entry: string) => {
       const content = entry.match(/<content type="text">([\s|\S]*?)<\/content>/m);
-      console.log('content', content);
 
       if (content) {
-        console.log('items', items);
         const id = +entry.match(/<id>(.*)<\/id>/)[1];
         if (items.length > this.fetchLimit) {
           if (items[items.length - 1].id > id) {

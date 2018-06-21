@@ -17,7 +17,6 @@ export class CountriesChartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('renderChart', this.data  );
     this.updateChart();
   }
 
