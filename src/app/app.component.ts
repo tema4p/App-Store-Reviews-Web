@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, QueryList} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routerTransition } from './animations/routerTransition';
 import { HostListener} from '@angular/core';
 import { Location } from '@angular/common';
+import * as _ from 'lodash';
 
 import 'normalize.css';
+import COUNTRIES from './models/countries.model';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +17,8 @@ import 'normalize.css';
 export class AppComponent implements OnInit {
   public searchWord: string = '';
   public expandedNavBar: boolean = true;
+  public countries: any[] = _.toPairs(COUNTRIES);
+  public selectedMarket: string = 'us';
 
   @HostListener('window:scroll', []) onWindowScroll(): void {
     this.expandedNavBar = window.scrollY === 0;
@@ -28,23 +32,11 @@ export class AppComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    // TODO fix initial search term
-    // if (this.route.snapshot.paramMap.get('word')) {
-    //   this.searchWord = this.route.snapshot.paramMap.get('word');
-    // }
-    //
-    // this.route.paramMap.subscribe(
-    //   (params: ParamMap | any) => {
-    //     if (params.params.word && (this.searchWord !== params.params.word)) {
-    //       this.searchWord = params.params.word;
-    //     }
-    //   }
-    // );
-  }
+  ngOnInit() { }
 
   public goToSearch(): void {
-    this.router.navigate(['/home', this.searchWord]);
+    console.log('goToSearch');
+    this.router.navigate(['/home', this.searchWord, this.selectedMarket]);
   }
 
   public resetSearch(): void {

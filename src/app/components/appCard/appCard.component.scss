@@ -1,6 +1,6 @@
 :host {
   padding: 12px;
-
+  width: 100%;
   line-height: 20px;
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@
 
     .right-column {
       padding: 0 15px;
-
+      flex: 1;
       .title {
         display: flex;
         i, b {

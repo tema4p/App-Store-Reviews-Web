@@ -6,8 +6,19 @@
       <button mat-button *ngIf="searchWord" matSuffix mat-icon-button aria-label="Clear" (click)="resetSearch()">
         <i class="fas fa-times"></i>
       </button>
-  </mat-form-field>
-    <button mat-button><i class="fas fa-chevron-right"></i></button>
+    </mat-form-field>
+    <button mat-icon-button><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="market-select">
+    <mat-form-field>
+      <mat-select [(value)]="selectedMarket"
+                  (selectionChange)="goToSearch()"
+                  placeholder="Market">
+        <mat-option *ngFor="let c of countries" [value]="c[0]">
+          {{c[1]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <a class="navigate-back"
           *ngIf="enabledBack()"
@@ -15,7 +26,6 @@
     <i class="fas fa-chevron-left"></i> Back To Search
   </a>
 </div>
-
 <div class="main" [@routerTransition]="o.isActivated ? o.activatedRoute : ''">
   <router-outlet #o="outlet"></router-outlet>
 </div>

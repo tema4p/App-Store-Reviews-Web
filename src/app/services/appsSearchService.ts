@@ -13,13 +13,13 @@ import { CardModel } from '../models/card.model';
 @Injectable()
 export class AppsSearchService {
 
-  private searchUrl: string = 'https://itunes.apple.com/search';
+  private searchUrl: string = 'https://itunes.apple.com';
   private items: any = {};
 
   constructor(private http: HttpClient) {}
 
-  public searchApps(term: string): Observable<CardModel[]> {
-    return this.http.get<any>(`${this.searchUrl}?term=${term}&entity=software`)
+  public searchApps(term: string, market: string): Observable<CardModel[]> {
+    return this.http.get<any>(`${this.searchUrl}/${market}/search?term=${term}&entity=software`)
       .pipe(
         map((data: any) => {
         const cards: CardModel[] = [];

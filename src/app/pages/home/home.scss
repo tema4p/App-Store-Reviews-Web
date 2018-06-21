@@ -34,19 +34,21 @@
     }
   }
 
+  h3 {
+    font-family: "Helvetica Light";
+    color: #ffffff;
+    font-weight: 300;
+    text-shadow: 1px 1px 15px #665bc7;
+    pointer-events: none;
+  }
+
   .favorites {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     min-height: 75vh;
-    h3 {
-      font-family: "Helvetica Light";
-      color: #ffffff;
-      font-weight: 300;
-      text-shadow: 1px 1px 15px #665bc7;
-      pointer-events: none;
-    }
+
     .favorites-apps {
       display: flex;
       justify-content: center;

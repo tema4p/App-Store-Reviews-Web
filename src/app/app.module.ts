@@ -17,10 +17,10 @@ import { MatButtonModule, MatInputModule, MatSelectModule, MatCardModule, MatTab
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import {AppsSearchService} from './services/appsSearchService';
-import {AngularFontAwesomeModule} from 'angular-font-awesome';
-import {MatIconModule} from '@angular/material/icon';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { AppsSearchService } from './services/appsSearchService';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material';
 import { ChartModule } from 'angular-highcharts';
 import { CountriesChartComponent } from './components/countries-chart/countries-chart.component';
@@ -28,7 +28,7 @@ import { StarsChartComponent } from './components/stars-chart/stars-chart.compon
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: 'home/:word', component: HomePageComponent },
+  { path: 'home/:word/:market', component: HomePageComponent },
   { path: 'appInfo/:id', component: AppInfoPageComponent },
   { path: '',
     redirectTo: '/home',

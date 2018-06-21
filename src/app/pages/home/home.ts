@@ -19,7 +19,8 @@ export class HomePageComponent implements OnInit {
   public favorites: CardModel[] = [];
   public isLoading = false;
 
-  private term = 'english';
+  public term = '';
+  public market = 'us';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -30,13 +31,17 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('word')) {
       this.term = this.route.snapshot.paramMap.get('word');
+      this.market = this.route.snapshot.paramMap.get('market');
       this.getItems();
     }
 
     this.route.paramMap.subscribe(
       (params: ParamMap | any) => {
-        if (params.params.word && (this.term !== params.params.word)) {
+        const wordChange = params.params.word && (this.term !== params.params.word);
+        const marketChange = params.params.market && (this.market !== params.params.market);
+        if (wordChange || marketChange) {
           this.term = params.params.word;
+          this.market = params.params.market;
           this.getItems();
         }
       }
@@ -49,7 +54,7 @@ export class HomePageComponent implements OnInit {
     this.isLoading = true;
 
     if (this.term && this.term.length >= 0) {
-      this.appsSearchService.searchApps(this.term)
+      this.appsSearchService.searchApps(this.term, this.market)
         .subscribe((cards: CardModel[]) => {
           this.items = _.sortBy(cards, ['trackId']);
           this.isLoading = false;
