@@ -8,6 +8,7 @@ import { switchMap } from 'rxjs/operators';
 import {AppsSearchService} from '../../services/appsSearchService';
 import { Location } from '@angular/common';
 import {routerTransition} from '../../animations/routerTransition';
+import COUNTRIES from '../../models/countries.model';
 
 @Component({
   selector: 'app-page-info',
@@ -22,11 +23,16 @@ export class AppInfoPageComponent implements OnInit  {
   public progress: any = {
     countriesTotal: 0,
     countriesResult: 0,
+    countByCountries: {},
+    countByRates: [0, 0, 0, 0, 0, 0]
   };
 
   public allReviews: IReview[] = [];
   private perPage = 20;
   private currentPage = 1;
+  public chart: any;
+  public countriesChartData: {};
+  public ratesChartData: [0, 0, 0, 0, 0];
 
   constructor(
               private route: ActivatedRoute,
@@ -37,14 +43,38 @@ export class AppInfoPageComponent implements OnInit  {
               public reviewService: ReviewService,
               public favoritesService: FavoritesService,
               public appsSearchService: AppsSearchService) {
+
+
   }
 
   fetchReviews() {
     this.reviewService.fetchReviewsByGroup(this.allReviews, this.progress, this.item.trackId, 10)
       .subscribe(() => {
+        console.log('this.allReviews', this.allReviews);
         this.items = this.allReviews.slice(0, this.perPage);
         this.loadedCountriesCount = this.getCountries();
+
+        this.calculateCountByCountries();
+        this.calculateCountByRates();
       });
+  }
+
+  calculateCountByCountries() {
+    let data: any[] = _.toPairs(this.progress.countByCountries);
+    data = _.map(data, (item) => {
+      return {
+        fullName: COUNTRIES[item[0]],
+        name: item[0],
+        y: item[1],
+      };
+    });
+    data = _.filter(data, (item) => item.y > 0);
+    this.countriesChartData = data;
+  }
+
+  calculateCountByRates() {
+    this.ratesChartData = this.progress.countByRates.slice(1).reverse();
+    console.log('data', this.ratesChartData);
   }
 
   ngOnInit() {

@@ -28,6 +28,19 @@
         AppStore&nbsp;<span name="ios-arrow-forward"></span>
       </a>
     </div>
+
+    <div class="charts">
+      <div class="chart">
+        <app-stars-chart [data]="ratesChartData"></app-stars-chart>
+      </div>
+      <div class="chart">
+        <app-countries-chart [data]="countriesChartData"></app-countries-chart>
+      </div>
+      <!--<div class="chart">-->
+        <!--<app-countries-chart [data]="countriesChartData"></app-countries-chart>-->
+      <!--</div>-->
+    </div>
+
     <div *ngFor="let review of items" class="review">
       <div class="header">
         <div class="flex">

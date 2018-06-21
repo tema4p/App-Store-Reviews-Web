@@ -29,7 +29,17 @@
         }
       }
     }
-
+  }
+  .charts {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+    max-height: 200px;
+    .chart {
+      flex: 1;
+      height: 200px;
+      max-height: 200px;
+    }
   }
 
   .navigate-back {
@@ -100,7 +110,7 @@
     padding: 12px 12px;
     border-bottom: 1px solid #f1f1f1;
     background: rgba(249, 249, 249, 0.89);
-    margin: 6px 0;
+    margin: 6px 0 6px;
     border-radius: 8px;
     box-shadow: 1px 1px 15px #0000002e;
 
@@ -109,6 +119,7 @@
       display: flex;
       .title {
         flex: 1;
+        padding-left: 15px;
         font-weight: 500;
       }
       .date, .version {

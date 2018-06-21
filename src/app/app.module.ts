@@ -22,6 +22,10 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material';
+import { ChartModule } from 'angular-highcharts';
+import { CountriesChartComponent } from './components/countries-chart/countries-chart.component';
+import { StarsChartComponent } from './components/stars-chart/stars-chart.component';
+
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
   { path: 'home/:word', component: HomePageComponent },
@@ -40,12 +44,14 @@ const appRoutes: Routes = [
     HomePageComponent,
     StarsComponent,
     AppCardComponent,
-    AppInfoPageComponent
+    AppInfoPageComponent,
+    StarsChartComponent,
+    CountriesChartComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      // { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: true } // <-- debugging purposes only
     ),
     FormsModule,
     BrowserModule,
@@ -59,7 +65,8 @@ const appRoutes: Routes = [
     MatIconModule,
     MatProgressBarModule,
     MatRippleModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ChartModule
   ],
   providers: [
     ReviewService,
