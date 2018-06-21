@@ -28,13 +28,17 @@ export class CardModel implements ICard {
   public trackId: number;
 
   constructor(card: any = {}) {
+    let desc: string = card.description || '';
+    desc = desc.replace(/\n\n/g, '<br/>');
+    desc = desc.replace(/\n/g, '<br/>');
+
     this.averageUserRating = card.averageUserRating || null;
     this.artworkUrl60 = card.artworkUrl60 || null;
     this.artworkUrl512 = card.artworkUrl512 || null;
     this.formattedPrice = card.formattedPrice || null;
     this.trackName = card.trackName || null;
     this.artistName = card.artistName || null;
-    this.description = card.description || null;
+    this.description = desc || null;
     this.genres = card.genres || [];
     this.version = card.version || null;
     this.fileSizeBytes = card.fileSizeBytes || null;

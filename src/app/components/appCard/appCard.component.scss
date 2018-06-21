@@ -1,70 +1,83 @@
 :host {
   padding: 12px;
-  display: flex;
-  flex-direction: row;
-  line-height: 20px;
 
+  line-height: 20px;
+  display: flex;
+  flex-direction: column;
   background: rgba(249, 249, 249, 0.89);
 
   border-radius: 5px;
   margin-bottom: 5px;
   position: relative;
-  i {
-    color: gray;
-  }
-  .left-column {
-    flex: 0 0 80px;
-    text-align: center;
-    position: relative;
-    color: gray;
-    .img {
+
+  .card-body {
+    display: flex;
+    flex-direction: row;
+
+    i {
+      color: gray;
+    }
+    .left-column {
       flex: 0 0 80px;
-      height: 80px;
-      background-size: cover;
-      border-radius: 15px;
-      margin: 2px 0;
-      .img-main {
-        width: 80px;
+      text-align: center;
+      position: relative;
+      color: gray;
+      .img {
+        flex: 0 0 80px;
         height: 80px;
         background-size: cover;
         border-radius: 15px;
+        margin: 2px 0;
+        .img-main {
+          width: 80px;
+          height: 80px;
+          background-size: cover;
+          border-radius: 15px;
+        }
+      }
+    }
+
+    .right-column {
+      padding: 0 15px;
+
+      .title {
+        display: flex;
+        i, b {
+          flex: 1;
+        }
+        i {
+          text-align: right;
+        }
+      }
+      .description {
+        flex: 0 0 55px;
+        line-height: 20px;
+        margin: 10px 0;
+        font-weight: 400;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        max-height: 38px;
+        width: 100%;
+        word-wrap: break-word;
+        word-break: break-word;
+      }
+
+      &.expanded {
+        .description {
+          max-height: none;
+        }
+      }
+      .info {
+        color: gray;
+        display: flex;
+        align-content: space-between;
+        span {
+          flex: 1;
+        }
       }
     }
   }
 
-  .right-column {
-    padding: 0 15px;
-
-    .title {
-      display: flex;
-      i, b {
-        flex: 1;
-      }
-      i {
-        text-align: right;
-      }
-    }
-    .description {
-      flex: 0 0 55px;
-      line-height: 20px;
-      margin: 10px 0;
-      font-weight: 400;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      max-height: 38px;
-      width: 100%;
-      word-wrap: break-word;
-      word-break: break-word;
-    }
-    .info {
-      color: gray;
-      display: flex;
-      align-content: space-between;
-      span {
-        flex: 1;
-      }
-    }
-  }
 }

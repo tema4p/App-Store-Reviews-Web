@@ -11,6 +11,9 @@ export class AppCardComponent {
   @Input()
   item: any;
 
+  @Input()
+  expanded: boolean;
+
   public fullImgDelay = false;
 
   constructor(
