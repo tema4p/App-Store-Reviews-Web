@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 
   public goToSearch(): void {
     localStorage['selectedMarket'] = this.selectedMarket;
-    this.router.navigate(['/home', this.searchWord, this.selectedMarket]);
+    this.router.navigate(['/home', this.selectedMarket, this.searchWord]);
   }
 
   public resetSearch(): void {

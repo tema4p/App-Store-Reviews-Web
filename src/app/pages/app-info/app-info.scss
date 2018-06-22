@@ -42,35 +42,6 @@
     }
   }
 
-  .navigate-back {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    width: 50px;
-    height: 100px;
-    background-color: #00000012;
-    background-image: url(/assets/img/bg.png);
-    border-radius: 25px;
-    cursor: pointer;
-    color: white;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    opacity: 0.5;
-    &:hover {
-      transition: 300ms ease all;
-      transform: scale(1.2);
-      left: 20px;
-      opacity: 1;
-    }
-
-    fa {
-      font-size: 70px;
-    }
-  }
-
   .progress {
     height: 2px;
     width: 100%;
@@ -102,6 +73,12 @@
     }
     .countries {
       flex: 1;
+    }
+    a {
+      color: #665cc6;
+      i {
+        font-size: 24px;
+      }
     }
   }
 

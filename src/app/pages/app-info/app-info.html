@@ -24,8 +24,10 @@
 
       <div class="reviews">Reviews: {{allReviews.length}}{{allReviews.length === 200 ? '+' : ''}}</div>
       <div class="countries">Countries: {{loadedCountriesCount}}</div>
-      <a href="https://itunes.apple.com/app/id{{item.trackId}}">
-        AppStore&nbsp;<span name="ios-arrow-forward"></span>
+      <a mat-button href="https://itunes.apple.com/app/id{{item.trackId}}">
+        <i class="fab fa-app-store-ios"></i>
+        Open In AppStore
+        <i class="fas fa-chevron-right"></i>
       </a>
     </div>
 
@@ -60,10 +62,5 @@
       </div>
     </div>
   </div>
-</div>
-
-
-<div class="navigate-back" (click)="navigateBack()">
-  <fa name="angle-left"></fa>
 </div>
 

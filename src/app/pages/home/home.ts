@@ -39,7 +39,7 @@ export class HomePageComponent implements OnInit {
       (params: ParamMap | any) => {
         const wordChange = params.params.word && (this.term !== params.params.word);
         const marketChange = params.params.market && (this.market !== params.params.market);
-        if (wordChange || marketChange) {
+        if (params.params.word && (wordChange || marketChange)) {
           this.term = params.params.word;
           this.market = params.params.market;
           this.getItems();
@@ -66,6 +66,6 @@ export class HomePageComponent implements OnInit {
   }
 
   public goToApp(item: any): void {
-    this.router.navigate(['/appInfo', item.trackId]);
+    this.router.navigate(['/appInfo', this.market, item.trackId]);
   }
 }

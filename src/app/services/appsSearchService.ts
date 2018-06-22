@@ -36,11 +36,11 @@ export class AppsSearchService {
       );
   }
 
-  public getApp(trackId: number): Observable<CardModel> {
+  public getApp(trackId: number, market: string): Observable<CardModel> {
     if (trackId && this.items[trackId]) {
       return Observable.of(this.items[trackId]);
     } else {
-      return this.http.get<any>(`${this.searchUrl}?term=${trackId}&entity=software`)
+      return this.http.get<any>(`${this.searchUrl}/${market}/search?term=${trackId}&entity=software`)
         .pipe(
           map( // Log the result or error
             (data: any) => {

@@ -76,7 +76,8 @@ export class AppInfoPageComponent implements OnInit  {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.appsSearchService.getApp(id).subscribe((res) => {
+    const market = this.route.snapshot.paramMap.get('market');
+    this.appsSearchService.getApp(id, market).subscribe((res) => {
       this.item = res;
       this.fetchReviews();
     });

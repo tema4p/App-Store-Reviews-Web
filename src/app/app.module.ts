@@ -28,8 +28,8 @@ import { StarsChartComponent } from './components/stars-chart/stars-chart.compon
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
-  { path: 'home/:word/:market', component: HomePageComponent },
-  { path: 'appInfo/:id', component: AppInfoPageComponent },
+  { path: 'home/:market/:word', component: HomePageComponent },
+  { path: 'appInfo/:market/:id', component: AppInfoPageComponent },
   { path: '',
     redirectTo: '/home',
     pathMatch: 'full'

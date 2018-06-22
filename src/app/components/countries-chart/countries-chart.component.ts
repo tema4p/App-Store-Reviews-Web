@@ -43,7 +43,7 @@ export class CountriesChartComponent implements OnInit, OnChanges {
         text: 'Reviews By Countries'
       },
       tooltip: {
-        pointFormat: '{point.fullName}: <b>{point.percentage:.1f}%</b>'
+        pointFormat: '{point.fullName}: <b>{point.percentage:.0f}%</b>'
       },
       plotOptions: {
         pie: {
@@ -51,7 +51,7 @@ export class CountriesChartComponent implements OnInit, OnChanges {
           cursor: 'pointer',
           dataLabels: {
             enabled: true,
-            format: '<b>{point.fullName}</b>: {point.percentage:.1f} %',
+            format: '<b>{point.fullName}</b>: {point.percentage:.0f} %',
           }
         }
       },

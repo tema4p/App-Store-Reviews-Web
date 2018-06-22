@@ -25,6 +25,11 @@
           (click)="navigateBack()">
     <i class="fas fa-chevron-left"></i> Back To Search
   </a>
+  <a class="navigate-back"
+     *ngIf="!enabledBack()"
+     (click)="resetSearch()">
+    <i class="fas fa-star"></i> My Favorites
+  </a>
 </div>
 <div class="main" [@routerTransition]="o.isActivated ? o.activatedRoute : ''">
   <router-outlet #o="outlet"></router-outlet>

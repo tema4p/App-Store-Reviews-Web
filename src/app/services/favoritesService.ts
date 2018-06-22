@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class FavoritesService {
 
-  public favorites: number[] = [];
+  public favorites: number[] = [1176444712, 822022963, 591787577];
 
   constructor(public http: HttpClient) {
     this.loadFavorites();
