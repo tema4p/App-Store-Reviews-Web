@@ -1,5 +1,6 @@
 import {Component, Input, SimpleChanges} from '@angular/core';
 import * as moment from 'moment';
+import { FavoritesService } from '../../services/favoritesService';
 
 @Component({
   selector: 'app-card',
@@ -17,6 +18,7 @@ export class AppCardComponent {
   public fullImgDelay = false;
 
   constructor(
+    public favoritesService: FavoritesService
   // public verbsService: VerbsService
   ) {
     setTimeout(() => {
@@ -30,5 +32,15 @@ export class AppCardComponent {
 
   public getDateFormatted(text: string): string {
     return moment(text).format('L');
+  }
+
+  public add(event: Event): void {
+    event.stopPropagation();
+    this.favoritesService.add(this.item);
+  }
+
+  public remove(event: Event): void {
+    event.stopPropagation();
+    this.favoritesService.remove(this.item);
   }
 }

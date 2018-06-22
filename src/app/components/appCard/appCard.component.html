@@ -9,6 +9,14 @@
   <div class="flex flex-column right-column" [ngClass]="[expanded ? 'expanded' : '']">
     <div class="title">
       <b>{{item.trackName}}</b> <i>{{item.artistName}}</i>
+      <div *ngIf="!expanded" class="info-favorite">
+        <span *ngIf="!favoritesService.isFavorite(item)" (click)="add($event)">
+          <i class="far fa-star"></i>
+        </span>
+        <span *ngIf="favoritesService.isFavorite(item)" (click)="remove($event)">
+          <i class="fas fa-star"></i>
+        </span>
+      </div>
     </div>
     <div class="description" [innerHtml]="item.description"></div>
 

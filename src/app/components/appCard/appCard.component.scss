@@ -48,6 +48,16 @@
         i {
           text-align: right;
         }
+
+        .info-favorite {
+          font-size: 1.3rem;
+          padding-left: 1rem;
+          cursor: pointer;
+          opacity: .5;
+          .far, .fas {
+            color: orange;
+          }
+        }
       }
       .description {
         flex: 0 0 55px;
