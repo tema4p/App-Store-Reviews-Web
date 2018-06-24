@@ -61,7 +61,7 @@ export class HomePageComponent implements OnInit {
           setTimeout(() => {
             window.scrollTo(0, 0);
           });
-        });
+        }, () => this.isLoading = false);
     }
   }
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/internal/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/internal/operators';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 
@@ -16,7 +17,7 @@ export class AppsSearchService {
   private searchUrl: string = 'https://itunes.apple.com';
   private items: any = {};
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   public searchApps(term: string, market: string): Observable<CardModel[]> {
     return this.http.get<any>(`${this.searchUrl}/${market}/search?term=${term}&entity=software`)
@@ -32,8 +33,23 @@ export class AppsSearchService {
         });
 
         return cards;
-        })
+        }),
+        catchError(this.handleError.bind(this))
       );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 403) {
+      this.toastr.error('Amounts of requests to API are limited');
+    }
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError('Something bad happened; please try again later.');
   }
 
   public getApp(trackId: number, market: string): Observable<CardModel> {

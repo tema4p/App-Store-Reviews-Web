@@ -25,6 +25,7 @@ import { MatRippleModule } from '@angular/material';
 import { ChartModule } from 'angular-highcharts';
 import { CountriesChartComponent } from './components/countries-chart/countries-chart.component';
 import { StarsChartComponent } from './components/stars-chart/stars-chart.component';
+import { ToastrModule } from 'ngx-toastr';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomePageComponent },
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     MatSelectModule,
     MatButtonModule,
     MatCardModule,
